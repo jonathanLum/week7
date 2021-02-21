@@ -18,6 +18,7 @@ app.get('/',function(req,res){
   }
   var context = {};
   context.urlTable = qParams;
+  context.type = "GET"
   res.render('get-table', context);
 });
 
@@ -30,6 +31,7 @@ app.post('/post-loopback', function(req,res){
   console.log(req.body);
   var context = {};
   context.bodyTable = qParams;
+  context.type = "POST"
   res.render('post-loopback', context);
 });
 
