@@ -19,20 +19,25 @@ app.get('/',function(req,res){
   var context = {};
   context.urlTable = qParams;
   context.type = "GET"
-  res.render('get-table', context);
+  res.render('show-data', context);
 });
 
 app.post('/post-loopback', function(req,res){
-  var qParams = [];
+  var bParams = [];
   for (var p in req.body){
-    qParams.push({'name':p,'value':req.body[p]})
+    bParams.push({'name':p,'value':req.body[p]})
   }
-  console.log(qParams);
+  console.log(bParams);
   console.log(req.body);
+  var qParams = [];
+  for (var p in req.query){
+    qParams.push({'name':p,'value':req.query[p]})
+  }
   var context = {};
-  context.bodyTable = qParams;
+  context.urlTable = qParams;
+  context.bodyTable = bParams;
   context.type = "POST"
-  res.render('post-loopback', context);
+  res.render('show-data', context);
 });
 
 
