@@ -1,6 +1,15 @@
-<h1>GET Request Received</h1>
+<h1>{{type}} Request Received</h1>
+
 <table>
-	{{#each dataTable}}
+	{{#each urlTable}}
+		<tr>
+			<th>{{this.name}}</th><td>{{this.value}}</td>
+		</tr>
+	{{/each}}
+</table>
+
+<table>
+	{{#each bodyTable}}
 		<tr>
 			<th>{{this.name}}</th><td>{{this.value}}</td>
 		</tr>
