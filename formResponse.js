@@ -22,7 +22,7 @@ app.get('/',function(req,res){
   res.render('get-table', context);
 });
 
-app.post('/', function(req,res){
+app.post('/post-loopback', function(req,res){
   var qParams = [];
   for (var p in req.body){
     qParams.push({'name':p,'value':req.body[p]})
