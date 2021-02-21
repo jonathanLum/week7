@@ -12,34 +12,31 @@ app.set('view engine', 'handlebars');
 app.set('port', 3366);
 
 app.get('/',function(req,res){
-  var qParams = [];
-  for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
+  var data = [];
+  for (var i in req.query){
+    data.push({'name':i,'value':req.query[i]})
   }
   var context = {};
-  context.urlTable = qParams;
+  context.urlTable = data;
   context.type = "GET"
   res.render('show-data', context);
 });
 
 app.post('/', function(req,res){
-  var bParams = [];
-  for (var p in req.body){
-    bParams.push({'name':p,'value':req.body[p]})
+  var dataBody = [];
+  for (var i in req.body){
+    dataBody.push({'name':i,'value':req.body[i]})
   }
-  console.log(bParams);
-  console.log(req.body);
-  var qParams = [];
-  for (var p in req.query){
-    qParams.push({'name':p,'value':req.query[p]})
+  var dataURL = [];
+  for (var n in req.query){
+    dataURL.push({'name':n,'value':req.query[n]})
   }
   var context = {};
-  context.urlTable = qParams;
-  context.bodyTable = bParams;
+  context.urlTable = dataURL;
+  context.bodyTable = dataBody;
   context.type = "POST"
   res.render('show-data', context);
 });
-
 
 app.use(function(req,res){
   res.status(404);
